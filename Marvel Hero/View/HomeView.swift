@@ -3,14 +3,23 @@ import SwiftfulUI
 
 struct HomeView: View {
   @State var vm = HeroViewModel()
+  @State var offset: CGPoint = .zero
   
   var body: some View {
-    ScrollView(.vertical) {
-      VStack(spacing: 0) {
-        Header
-        Title
-        SelectCategoryView(vm: $vm)
+    ScrollViewWithOnScrollChanged {
+      LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
+        Section {
+          Title
+            .opacity(offset.y > -20 ? 1 : 0)
+            .offset(y: offset.y > -20 ? 0 : -20)
+          SelectCategoryView(vm: $vm)
+            .offset(y: offset.y > -20 ? 0 : -120)
+        } header: {
+          Header
+        }
       }
+    } onScrollChanged: { origin in
+      offset = origin
     }
     .scrollIndicators(.hidden)
     .clipped()
@@ -34,9 +43,17 @@ struct HomeView: View {
     }
     .padding(.horizontal, 24)
     .frame(height: 64)
+    .background(.white)
     .overlay(alignment: .center) {
       Image(.logo)
         .foregroundStyle(.appRed)
+    }
+    .overlay(alignment: .bottom) {
+      if offset.y < -20 {
+        Rectangle()
+          .frame(height: 0.6)
+          .foregroundStyle(.appGrey)
+      }
     }
   }
   
