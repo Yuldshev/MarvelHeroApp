@@ -47,28 +47,28 @@ final class HeroViewModel {
   }
   
   //MARK: - FilterHero
-  func filterGoodHeroes(by array: [Hero]) -> [Hero] {
+  func filterGoodHeroes() -> [Hero] {
     let goodHero = [346, 149, 659, 332, 107, 313]
-    return array.filter { goodHero.contains($0.id) }
+    return heroes.filter { goodHero.contains($0.id) }
   }
   
-  func filterBadHeroes(by array: [Hero]) -> [Hero] {
+  func filterBadHeroes() -> [Hero] {
     let badHero = [655, 414, 680, 321, 299, 222]
-    return array.filter { badHero.contains($0.id) }
+    return heroes.filter { badHero.contains($0.id) }
   }
   
-  func filterAntiHeroes(by array: [Hero]) -> [Hero] {
+  func filterAntiHeroes() -> [Hero] {
     let antiHero = [213, 687, 714, 99, 238, 530]
-    return array.filter { antiHero.contains($0.id) }
+    return heroes.filter { antiHero.contains($0.id) }
   }
   
-  func filterAlienHeroes(by array: [Hero]) -> [Hero] {
+  func filterAlienHeroes() -> [Hero] {
     let alienHero = [275, 234, 566, 303, 487, 431]
-    return array.filter { alienHero.contains($0.id) }
+    return heroes.filter { alienHero.contains($0.id) }
   }
   
-  func filterHumanHeroes(by array: [Hero]) -> [Hero] {
+  func filterHumanHeroes() -> [Hero] {
     let humanHero = [251, 489, 11, 107, 313, 346]
-    return array.filter { humanHero.contains($0.id) }
+    return heroes.filter { humanHero.contains($0.id) }
   }
 }

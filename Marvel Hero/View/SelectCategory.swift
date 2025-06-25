@@ -60,27 +60,27 @@ struct SelectCategory: View {
   }
   
   private var GoodHeroList: some View {
-    let goodHeroes = vm.filterGoodHeroes(by: vm.heroes)
+    let goodHeroes = vm.filterGoodHeroes()
     return HeroListView(title: "Heroes", heroes: goodHeroes)
   }
   
   private var BadHeroList: some View {
-    let badHeroes = vm.filterBadHeroes(by: vm.heroes)
+    let badHeroes = vm.filterBadHeroes()
     return HeroListView(title: "Villain", heroes: badHeroes)
   }
   
   private var AntiHeroList: some View {
-    let antiHeroes = vm.filterAntiHeroes(by: vm.heroes)
+    let antiHeroes = vm.filterAntiHeroes()
     return HeroListView(title: "Anti Heroes", heroes: antiHeroes)
   }
   
   private var AlienHeroList: some View {
-    let alienHeroes = vm.filterAlienHeroes(by: vm.heroes)
+    let alienHeroes = vm.filterAlienHeroes()
     return HeroListView(title: "Alien", heroes: alienHeroes)
   }
   
   private var HumanHeroList: some View {
-    let humanHeroes = vm.filterHumanHeroes(by: vm.heroes)
+    let humanHeroes = vm.filterHumanHeroes()
     return HeroListView(title: "Human", heroes: humanHeroes)
   }
   
