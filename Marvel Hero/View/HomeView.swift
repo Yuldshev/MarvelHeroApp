@@ -9,7 +9,7 @@ struct HomeView: View {
       VStack(spacing: 0) {
         Header
         Title
-        SelectCategory(vm: $vm)
+        SelectCategoryView(vm: $vm)
       }
     }
     .scrollIndicators(.hidden)
