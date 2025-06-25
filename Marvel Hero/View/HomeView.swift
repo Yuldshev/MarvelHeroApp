@@ -2,13 +2,14 @@ import SwiftUI
 import SwiftfulUI
 
 struct HomeView: View {
+  @State var vm = HeroViewModel()
+  
   var body: some View {
     ScrollView(.vertical) {
       VStack(spacing: 0) {
         Header
         Title
-        CharacterList
-        GoodHeroList
+        SelectCategory(vm: $vm)
       }
     }
     .scrollIndicators(.hidden)
@@ -49,24 +50,6 @@ struct HomeView: View {
     }
     .padding(24)
     .frame(maxWidth: .infinity, alignment: .leading)
-  }
-  
-  private var CharacterList: some View {
-    HStack(spacing: 12) {
-      IconView(image: Image(.iconKVM), background: .marvelBlue)
-      IconView(image: Image(.iconVillains), background: .marvelRed)
-      IconView(image: Image(.iconMutants), background: .marvelPurple)
-      IconView(image: Image(.iconAlien), background: .marvelGreen)
-      IconView(image: Image(.iconHuman), background: .marvelPink)
-    }
-    .padding(.top, 8)
-    .padding(.horizontal, 24)
-  }
-  
-  private var GoodHeroList: some View {
-    HeroListView(title: "Heroes", heroes: mockHeroes) {
-      //TODO: - DetailListView
-    }
   }
 }
 

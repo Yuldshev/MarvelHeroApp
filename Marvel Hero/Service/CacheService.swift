@@ -40,11 +40,16 @@ actor CacheService: CacheServiceProtocol {
 }
 
 enum CacheKey: String {
-  case hero
+  case hero, goodHero, evilHero, antiHero, alienHero, humanHero
   
   var type: Any.Type {
     switch self {
       case .hero: return [Hero].self
+      case .goodHero: return [Hero].self
+      case .evilHero: return [Hero].self
+      case .antiHero: return [Hero].self
+      case .alienHero: return [Hero].self
+      case .humanHero: return [Hero].self
     }
   }
 }

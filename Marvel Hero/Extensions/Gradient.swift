@@ -63,6 +63,14 @@ extension LinearGradient {
       endPoint: .bottom
     )
   }
+  
+  static var black: LinearGradient {
+    LinearGradient(
+      gradient: Gradient(colors: [ .black ]),
+      startPoint: .top,
+      endPoint: .bottom
+    )
+  }
 }
 
 extension Color {
