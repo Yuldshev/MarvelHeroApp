@@ -4,7 +4,7 @@ import SwiftUI
 struct MarvelHeroApp: App {
   var body: some Scene {
     WindowGroup {
-      MainView()
+      HomeView()
     }
   }
 }

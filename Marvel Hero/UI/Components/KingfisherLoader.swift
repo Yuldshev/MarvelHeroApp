@@ -4,28 +4,35 @@ import SwiftfulLoadingIndicators
 
 struct KingfisherLoader: View {
   var url: String = Constants.randomImage
-  var resizingMode: SwiftUI.ContentMode = .fit
-  var cornerRadius: CGFloat = 12
+  var resizingMode: SwiftUI.ContentMode = .fill
   var placeholder: Color = .gray.opacity(0.2)
   
   var body: some View {
-    KFImage(URL(string: url))
-      .placeholder {
-        ZStack {
-          placeholder
-          LoadingIndicator()
-        }
+    Rectangle()
+      .opacity(0.01)
+      .overlay {
+        KFImage(URL(string: url))
+          .placeholder {
+            ZStack {
+              placeholder
+              LoadingIndicator()
+            }
+          }
+          .resizable()
+          .aspectRatio(contentMode: resizingMode)
+          
       }
-      .cacheMemoryOnly()
-      .fade(duration: 0.25)
-      .resizable()
-      .aspectRatio(contentMode: resizingMode)
-      .cornerRadius(cornerRadius)
+      .clipped()
   }
 }
 
 #Preview {
-  KingfisherLoader()
-    .padding(50)
+  HStack {
+    KingfisherLoader()
+      .frame(width: 180, height: 230)
+    
+    KingfisherLoader()
+      .frame(width: 140, height: 230)
+  }
     
 }

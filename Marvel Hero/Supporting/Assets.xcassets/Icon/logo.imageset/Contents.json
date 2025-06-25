@@ -19,6 +19,7 @@
     "version" : 1
   },
   "properties" : {
+    "compression-type" : "automatic",
     "template-rendering-intent" : "template"
   }
 }
