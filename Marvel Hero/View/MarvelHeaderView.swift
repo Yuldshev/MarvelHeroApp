@@ -6,6 +6,8 @@ struct MarvelHeaderView: View {
   @Binding var vm: HeroViewModel
   @State private var isSearch = false
   @Environment(\.router) var router
+  @FocusState var isFocused: Bool
+  @Environment(\.colorScheme) var colorScheme
   
   var body: some View {
     HStack {
@@ -23,6 +25,7 @@ struct MarvelHeaderView: View {
           .frame(maxWidth: .infinity, alignment: .trailing)
           .asButton {
             isSearch.toggle()
+            isFocused = true
           }
       } else {
         HStack {
@@ -30,9 +33,11 @@ struct MarvelHeaderView: View {
           
           TextField("Search...", text: $vm.searchText)
             .gilroySemibold()
+            .focused($isFocused)
           
           Image(systemName: "xmark")
             .asButton {
+              isFocused = false
               vm.searchText = ""
               isSearch.toggle()
             }
@@ -47,7 +52,7 @@ struct MarvelHeaderView: View {
     }
     .padding(.horizontal, 24)
     .frame(height: 64)
-    .background(.white)
+    .background(colorScheme == .dark ? .black : .white)
     .animation(.easeIn, value: isSearch)
     .overlay(alignment: .center) {
       VStack {

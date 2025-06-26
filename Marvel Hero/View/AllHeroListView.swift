@@ -26,6 +26,7 @@ struct AllHeroListView: View {
     .scrollIndicators(.hidden)
     .toolbar(.hidden, for: .navigationBar)
     .clipped()
+    .swipeBackGesture()
     .animation(.easeInOut, value: offset)
     .animation(.easeInOut, value: vm.selectedCategory)
   }

@@ -7,7 +7,7 @@ struct MenuBar: View {
   @Environment(\.router) var router
   
   let config = ResizableSheetConfig(
-    detents: [.height(260)],
+    detents: [.height(260), .medium],
     dragIndicator: .visible
   )
   
@@ -77,8 +77,9 @@ struct AppInfoView: View {
   let header: String
   let text: String
   
+  
+  @Environment(\.colorScheme) var colorScheme
   var body: some View {
-    ScrollView(.vertical) {
       VStack(alignment: .leading, spacing: 12) {
         Text(header)
           .gilroyHeavy(size: .small)
@@ -86,16 +87,18 @@ struct AppInfoView: View {
         Text(text)
           .gilroyRegular()
       }
+      .foregroundStyle(colorScheme == .light ? .white : .black)
       .padding(24)
-    }
-    .scrollIndicators(.hidden)
+      .padding(.top, 24)
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+      .background(colorScheme == .light ? .black : .white)
   }
 }
 
 // MARK: - Preview
 #Preview {
   ZStack {
-    Color.black.ignoresSafeArea()
+    Color.yellow.ignoresSafeArea()
     
     MenuBar(vm: .constant(HeroViewModel()))
   }

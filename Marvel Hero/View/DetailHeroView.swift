@@ -15,6 +15,7 @@ struct DetailHeroView: View {
     .scrollIndicators(.hidden)
     .inlineNav(title: "")
     .background(.black)
+    .swipeBackGesture()
   }
   
   //MARK: - Section View
