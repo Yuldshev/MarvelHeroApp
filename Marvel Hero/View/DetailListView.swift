@@ -1,6 +1,8 @@
 import SwiftUI
+import SwiftfulUI
 
 struct DetailListView: View {
+  @Environment(\.router) var router
   var heroes: [Hero] = mockHeroes
   var columns = [
     GridItem(.flexible(), spacing: 16),
@@ -8,16 +10,16 @@ struct DetailListView: View {
   ]
   
   var body: some View {
-    ScrollView(.vertical) {
-      LazyVGrid(columns: columns, spacing: 16) {
-        ForEach(heroes) { hero in
-          HeroBigCard(image: hero.images.lg, name: hero.name, comicsName: hero.biography.fullName)
-        }
+    LazyVGrid(columns: columns, spacing: 16) {
+      ForEach(heroes) { hero in
+        HeroBigCard(image: hero.images.lg, name: hero.name, comicsName: hero.biography.fullName)
+          .asButton(.press) {
+            router.showScreen(.push) { _ in DetailHeroView(hero: hero) }
+          }
       }
-      .padding(.horizontal, 24)
-      .padding(.vertical, 24)
     }
-    .clipped()
+    .padding(.horizontal, 24)
+    .padding(.vertical, 24)
   }
 }
 

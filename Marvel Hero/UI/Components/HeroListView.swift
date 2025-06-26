@@ -1,6 +1,8 @@
 import SwiftUI
+import SwiftfulUI
 
 struct HeroListView: View {
+  @Environment(\.router) var router
   var title: String = "Heroes"
   var heroes: [Hero] = mockHeroes
   
@@ -21,6 +23,9 @@ struct HeroListView: View {
                   .opacity(phase.isIdentity ? 1 : 0.6)
                   .scaleEffect(phase.isIdentity ? 1 : 0.95)
               }
+              .asButton(.press) {
+                router.showScreen(.push) { _ in DetailHeroView(hero: hero) }
+              }
           }
         }
         .scrollTargetLayout()
@@ -38,4 +43,5 @@ struct HeroListView: View {
     HeroListView()
     HeroListView()
   }
+  .previewRouter()
 }

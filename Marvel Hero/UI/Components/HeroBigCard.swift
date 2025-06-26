@@ -20,9 +20,9 @@ struct HeroListHeader: View {
 }
 
 struct HeroBigCard: View {
-  var image: String = Constants.randomImage
-  var name: String = "Peter Parker"
-  var comicsName: String = "Spider-Man"
+  var image: String = mockHeroes.last!.images.lg
+  var name: String = mockHeroes.last!.biography.fullName
+  var comicsName: String = mockHeroes.last!.name
   
   var body: some View {
     VStack(alignment: .leading) {

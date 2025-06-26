@@ -7,8 +7,8 @@ struct Hero: Identifiable, Codable, Equatable {
   let powerstats: Powerstats
   let appearance: Appearance
   let biography: Biography
-  let work: Work
-  let connections: Connections
+  let work: Work?
+  let connections: Connections?
   let images: Images
 }
 
@@ -42,6 +42,17 @@ struct Images: Codable, Equatable {
 struct Powerstats: Codable, Equatable {
   let intelligence, strength, speed, durability: Int
   let power, combat: Int
+  
+  var asArray: [(title: String, value: Int)] {
+    [
+      ("Intelligence", intelligence),
+      ("Strength", strength),
+      ("Speed", speed),
+      ("Durability", durability),
+      ("Power", power),
+      ("Combat", combat)
+    ]
+  }
 }
 
 // MARK: - Work
