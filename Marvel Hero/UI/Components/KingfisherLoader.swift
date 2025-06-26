@@ -1,9 +1,8 @@
 import SwiftUI
 import Kingfisher
-import SwiftfulLoadingIndicators
 
 struct KingfisherLoader: View {
-  var url: String = Constants.randomImage
+  var url: String = ""
   var resizingMode: SwiftUI.ContentMode = .fill
   var placeholder: Color = .gray.opacity(0.2)
   
@@ -15,7 +14,7 @@ struct KingfisherLoader: View {
           .placeholder {
             ZStack {
               placeholder
-              LoadingIndicator()
+                .skeleton(true)
             }
           }
           .resizable()

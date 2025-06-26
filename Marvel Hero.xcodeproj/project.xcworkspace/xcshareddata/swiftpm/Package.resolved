@@ -1,5 +1,5 @@
 {
-  "originHash" : "53b6379c490c4805d1008061474c1766918a5ccbe5cbcc1c6d21aa437ba49125",
+  "originHash" : "b9136e1dce48ddb14481b48dc159b13bacfed26f00e105b3f45048d70ee464d8",
   "pins" : [
     {
       "identity" : "kingfisher",
@@ -8,15 +8,6 @@
       "state" : {
         "revision" : "010a06c4387cea2d13606222b6c08e0454e6dd2d",
         "version" : "8.3.3"
-      }
-    },
-    {
-      "identity" : "swiftfulloadingindicators",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git",
-      "state" : {
-        "revision" : "85858c0246dcd781228301f9928519f75ce89758",
-        "version" : "0.0.4"
       }
     },
     {

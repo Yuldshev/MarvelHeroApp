@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		137910C42E0AD47100CF716D /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 137910C32E0AD47100CF716D /* SwiftfulRouting */; };
 		137910C72E0AD48D00CF716D /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 137910C62E0AD48D00CF716D /* SwiftfulUI */; };
-		137910CA2E0AD4F300CF716D /* SwiftfulLoadingIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = 137910C92E0AD4F300CF716D /* SwiftfulLoadingIndicators */; };
 		137910CD2E0AD53700CF716D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 137910CC2E0AD53700CF716D /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 				137910CD2E0AD53700CF716D /* Kingfisher in Frameworks */,
 				137910C72E0AD48D00CF716D /* SwiftfulUI in Frameworks */,
 				137910C42E0AD47100CF716D /* SwiftfulRouting in Frameworks */,
-				137910CA2E0AD4F300CF716D /* SwiftfulLoadingIndicators in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +76,6 @@
 			packageProductDependencies = (
 				137910C32E0AD47100CF716D /* SwiftfulRouting */,
 				137910C62E0AD48D00CF716D /* SwiftfulUI */,
-				137910C92E0AD4F300CF716D /* SwiftfulLoadingIndicators */,
 				137910CC2E0AD53700CF716D /* Kingfisher */,
 			);
 			productName = "Marvel Hero";
@@ -112,7 +109,6 @@
 			packageReferences = (
 				137910C22E0AD47100CF716D /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
 				137910C52E0AD48D00CF716D /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
-				137910C82E0AD4F300CF716D /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */,
 				137910CB2E0AD53700CF716D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -375,14 +371,6 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		137910C82E0AD4F300CF716D /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.4;
-			};
-		};
 		137910CB2E0AD53700CF716D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -403,11 +391,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 137910C52E0AD48D00CF716D /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
 			productName = SwiftfulUI;
-		};
-		137910C92E0AD4F300CF716D /* SwiftfulLoadingIndicators */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 137910C82E0AD4F300CF716D /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */;
-			productName = SwiftfulLoadingIndicators;
 		};
 		137910CC2E0AD53700CF716D /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

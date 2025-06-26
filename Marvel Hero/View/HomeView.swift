@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftfulUI
 
 struct HomeView: View {
-  @State var vm = HeroViewModel()
+  @Binding var vm: HeroViewModel
   @State var offset: CGPoint = .zero
   
   var body: some View {
@@ -55,6 +55,6 @@ struct HomeView: View {
 
 //MARK: - Preview
 #Preview {
-  HomeView()
+  HomeView(vm: .constant(HeroViewModel()))
     .previewRouter()
 }

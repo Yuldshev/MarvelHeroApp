@@ -8,7 +8,7 @@ struct SwipeBackGesture: ViewModifier {
     content
       .contentShape(Rectangle())
       .gesture(
-        DragGesture(minimumDistance: 20, coordinateSpace: .local)
+        DragGesture(minimumDistance: 5, coordinateSpace: .local)
           .updating($dragOffset) { value, state, _ in
             if value.translation.width > 0 && abs(value.translation.height) < 50 {
               state = value.translation.width

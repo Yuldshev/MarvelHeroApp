@@ -21,10 +21,8 @@ final class HeroViewModel {
   func fetchHeroes() async {
     if let cachedHeroes = await cacheService.loadCache(key: .hero, as: [Hero].self) {
       heroes = cachedHeroes
-      print("Load cached data")
     } else {
       await loadHeroes()
-      print("Fetch api data")
     }
   }
   

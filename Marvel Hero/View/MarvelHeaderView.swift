@@ -46,7 +46,7 @@ struct MarvelHeaderView: View {
         .padding(.horizontal, 16)
         .frame(height: 34)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.appSilver)
+        .background(colorScheme == .light ? .appSilver : .appDark)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
       }
     }

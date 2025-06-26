@@ -5,6 +5,7 @@ struct AllHeroListView: View {
   @Binding var vm: HeroViewModel
   @State var offset: CGPoint = .zero
   @Environment(\.router) var router
+  @Environment(\.colorScheme) var scheme
   
   let columns = [
     GridItem(.flexible(), spacing: 16),
@@ -44,12 +45,12 @@ struct AllHeroListView: View {
       
       CategoryTextView(selectedCategory: $vm.selectedCategory)
     }
-      .background(offset.y < -20 ? .white : .clear)
+    .background(offset.y < -20 ? (scheme == .light ? .white : .black) : .clear)
       .overlay(alignment: .bottom) {
         if offset.y < -20 {
           Rectangle()
             .frame(height: 1)
-            .foregroundStyle(.appGrey)
+            .foregroundStyle(.appGrey.opacity(0.6))
         }
       }
   }
@@ -57,21 +58,22 @@ struct AllHeroListView: View {
 
 struct CategoryTextView: View {
   @Binding var selectedCategory: HeroCategory
+  @Environment(\.colorScheme) var scheme
   
   var body: some View {
     HStack {
       ScrollView(.horizontal) {
         HStack(spacing: 0.0) {
           ForEach(HeroCategory.allCases, id: \.rawValue) { item in
-            Button { selectedCategory = item } label: {
-              Text(item.title)
-                .foregroundStyle(selectedCategory == item ? .white : .black)
-                .gilroyMedium(size: .small)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
-                .lineLimit(1)
-                .withBackground(color: selectedCategory == item ? .appRed : .appSilver, cornerRadius: 8)
-            }
+            Text(item.title)
+              .gilroyMedium(size: .small)
+              .padding(.horizontal, 16)
+              .padding(.vertical, 8)
+              .lineLimit(1)
+              .withBackground(color: selectedCategory == item ? .appRed : (scheme == .light ? .appSilver : .appDark), cornerRadius: 8)
+              .asButton(.press) {
+                selectedCategory = item
+              }
             .containerRelativeFrame(.horizontal, count: 4, spacing: 0)
             .scrollTransition { content, phase in
               content

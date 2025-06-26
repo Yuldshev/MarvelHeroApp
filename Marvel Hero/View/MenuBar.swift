@@ -5,6 +5,7 @@ import SwiftfulRouting
 struct MenuBar: View {
   @Binding var vm: HeroViewModel
   @Environment(\.router) var router
+  @Environment(\.colorScheme) var scheme
   
   let config = ResizableSheetConfig(
     detents: [.height(260), .medium],
@@ -13,18 +14,20 @@ struct MenuBar: View {
   
   var body: some View {
     HStack(alignment: .top) {
-      VStack(alignment: .leading, spacing: 12) {
+      VStack(alignment: .leading, spacing: 24) {
         ForEach(menuItems) { item in
           MenuBarItemView(item: item)
         }
       }
-      .padding(.top, 56)
+      .padding(.top, 80)
       .padding(24)
-      .gilroyHeavy(size: .small)
+      .gilroyHeavy(size: .medium)
       .frame(maxWidth: .infinity, alignment: .leading)
     }
-    .withGradientBorder(borderGradient: LinearGradient.whiteOverlay, borderWidth: 2, cornerRadius: 12)
-    .withBackground(color: .appSilver.opacity(0.8), cornerRadius: 12)
+    .withBackground(
+      color: scheme == .light ? .appSilver.opacity(0.8) : .appDark,
+      cornerRadius: 12
+    )
   }
   
   private func showAppInfo(index: Int) {
