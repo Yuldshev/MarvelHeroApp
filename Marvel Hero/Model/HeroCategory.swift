@@ -2,11 +2,11 @@ import Foundation
 import SwiftUI
 
 enum HeroCategory: String, CaseIterable {
-  case good, bad, anti, alien, human, all
+  case all, good, bad, anti, alien, human
   
   var title: String {
     switch self {
-      case .all: return "All Heroes"
+      case .all: return "All"
       case .good: return "Heroes"
       case .bad: return "Villains"
       case .anti: return "Antagonists"

@@ -9,13 +9,9 @@ struct HomeView: View {
     ScrollViewWithOnScrollChanged {
       LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
         Section {
-          Title
-            .opacity(offset.y > -20 ? 1 : 0)
-            .offset(y: offset.y > -20 ? 0 : -20)
-          SelectCategoryView(vm: $vm)
-            .offset(y: offset.y > -20 ? 0 : -120)
+          SectionView
         } header: {
-          Header
+          MarvelHeaderView(offset: $offset, vm: $vm)
         }
       }
     } onScrollChanged: { origin in
@@ -23,38 +19,7 @@ struct HomeView: View {
     }
     .scrollIndicators(.hidden)
     .clipped()
-  }
-  
-  private var Header: some View {
-    HStack {
-      Image(systemName: "line.3.horizontal")
-        .frame(width: 24, height: 24)
-        .asButton(.opacity) {
-          //TODO: - MenuBar
-        }
-      
-      Spacer()
-      
-      Image(systemName: "magnifyingglass")
-        .frame(width: 24, height: 24)
-        .asButton(.press) {
-          //TODO: - Search
-        }
-    }
-    .padding(.horizontal, 24)
-    .frame(height: 64)
-    .background(.white)
-    .overlay(alignment: .center) {
-      Image(.logo)
-        .foregroundStyle(.appRed)
-    }
-    .overlay(alignment: .bottom) {
-      if offset.y < -20 {
-        Rectangle()
-          .frame(height: 0.6)
-          .foregroundStyle(.appGrey)
-      }
-    }
+    .toolbar(.hidden, for: .navigationBar)
   }
   
   private var Title: some View {
@@ -68,8 +33,28 @@ struct HomeView: View {
     .padding(24)
     .frame(maxWidth: .infinity, alignment: .leading)
   }
+  
+  private var SectionView: some View {
+    VStack(spacing: 0) {
+      if vm.searchText.isEmpty {
+        VStack(spacing: 0) {
+          Title
+          SelectCategoryView(vm: $vm)
+        }
+        .transition(.blurReplace)
+      } else {
+        SearchListView(vm: $vm)
+          .transition(.blurReplace)
+      }
+    }
+    .animation(.easeInOut, value: vm.searchText)
+  }
 }
 
+
+
+//MARK: - Preview
 #Preview {
   HomeView()
+    .previewRouter()
 }

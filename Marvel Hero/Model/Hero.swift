@@ -21,7 +21,8 @@ struct Appearance: Codable, Equatable {
 
 // MARK: - Biography
 struct Biography: Codable, Equatable {
-  let fullName, alterEgos: String?
+  let fullName: String
+  let alterEgos: String?
   let aliases: [String]
   let placeOfBirth, firstAppearance, publisher, alignment: String?
 }

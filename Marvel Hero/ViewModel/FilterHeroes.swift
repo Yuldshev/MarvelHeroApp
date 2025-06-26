@@ -25,4 +25,14 @@ extension HeroViewModel {
     let humanHero = [251, 489, 11, 107, 313, 346]
     return heroes.filter { humanHero.contains($0.id) }
   }
+  
+  func searchHeroes(_ query: String) -> [Hero] {
+    let lowercasedQuery = query.lowercased()
+    let filteredHeroes = heroes.filter { hero in
+      hero.name.lowercased().contains(lowercasedQuery) ||
+      hero.biography.fullName.lowercased().contains(lowercasedQuery)
+    }
+    
+    return filteredHeroes
+  }
 }

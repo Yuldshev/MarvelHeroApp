@@ -4,6 +4,7 @@ import Foundation
 final class HeroViewModel {
   var heroes: [Hero] = []
   var selectedCategory: HeroCategory = .all
+  var searchText: String = ""
   
   var errorMessage: String? = nil
   

@@ -14,7 +14,7 @@ struct HeroListView: View {
       ScrollView(.horizontal) {
         HStack {
           ForEach(heroes) { hero in
-            HeroBigCard(image: hero.images.lg, name: hero.biography.fullName ?? "", comicsName: hero.name)
+            HeroBigCard(image: hero.images.lg, name: hero.biography.fullName, comicsName: hero.name)
               .containerRelativeFrame(.horizontal, count: 2, spacing: 16)
               .scrollTransition { content, phase in
                 content

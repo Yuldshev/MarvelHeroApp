@@ -1,0 +1,103 @@
+import SwiftUI
+import SwiftfulUI
+import SwiftfulRouting
+
+struct MenuBar: View {
+  @Binding var vm: HeroViewModel
+  @Environment(\.router) var router
+  
+  let config = ResizableSheetConfig(
+    detents: [.height(260)],
+    dragIndicator: .visible
+  )
+  
+  var body: some View {
+    HStack(alignment: .top) {
+      VStack(alignment: .leading, spacing: 12) {
+        ForEach(menuItems) { item in
+          MenuBarItemView(item: item)
+        }
+      }
+      .padding(.top, 56)
+      .padding(24)
+      .gilroyHeavy(size: .small)
+      .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    .withGradientBorder(borderGradient: LinearGradient.whiteOverlay, borderWidth: 2, cornerRadius: 12)
+    .withBackground(color: .appSilver.opacity(0.8), cornerRadius: 12)
+  }
+  
+  private func showAppInfo(index: Int) {
+    router.dismissModal()
+    router.showScreen(.sheetConfig(config: config)) { _ in
+      AppInfoView(header: aboutAppItem[index].header, text: aboutAppItem[index].text)
+    }
+  }
+  
+  private var menuItems: [MenuItem] {
+    [
+      MenuItem(title: "All Heroes") {
+        router.dismissModal()
+        router.showScreen(.push) { _ in AllHeroListView(vm: $vm) }
+      },
+      MenuItem(title: "Terms of Use") {
+        showAppInfo(index: 0)
+      },
+      MenuItem(title: "Privacy Policy") {
+        showAppInfo(index: 1)
+      },
+      MenuItem(title: "About") {
+        showAppInfo(index: 2)
+      }
+    ]
+  }
+}
+
+// MARK: - Menu Item Model
+struct MenuItem: Identifiable {
+  let id = UUID()
+  let title: String
+  let action: () -> Void
+}
+
+// MARK: - Menu Item View
+struct MenuBarItemView: View {
+  let item: MenuItem
+  
+  var body: some View {
+    Text(item.title)
+      .asButton(.press) {
+        item.action()
+      }
+  }
+}
+
+// MARK: - App Info View
+struct AppInfoView: View {
+  let header: String
+  let text: String
+  
+  var body: some View {
+    ScrollView(.vertical) {
+      VStack(alignment: .leading, spacing: 12) {
+        Text(header)
+          .gilroyHeavy(size: .small)
+        
+        Text(text)
+          .gilroyRegular()
+      }
+      .padding(24)
+    }
+    .scrollIndicators(.hidden)
+  }
+}
+
+// MARK: - Preview
+#Preview {
+  ZStack {
+    Color.black.ignoresSafeArea()
+    
+    MenuBar(vm: .constant(HeroViewModel()))
+  }
+  .previewRouter()
+}

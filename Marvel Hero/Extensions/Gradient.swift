@@ -71,6 +71,13 @@ extension LinearGradient {
       endPoint: .bottom
     )
   }
+  static var whiteOverlay: LinearGradient {
+    LinearGradient(
+      gradient: Gradient(colors: [ .white, .white.opacity(0.01)]),
+      startPoint: .topLeading,
+      endPoint: .bottomTrailing
+    )
+  }
 }
 
 extension Color {
