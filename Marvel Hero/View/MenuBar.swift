@@ -3,7 +3,7 @@ import SwiftfulUI
 import SwiftfulRouting
 
 struct MenuBar: View {
-  @Binding var vm: HeroViewModel
+  @Binding var vm: HomeStore
   @Environment(\.router) var router
   @Environment(\.colorScheme) var scheme
   
@@ -41,7 +41,7 @@ struct MenuBar: View {
     [
       MenuItem(title: "All Heroes") {
         router.dismissModal()
-        router.showScreen(.push) { _ in AllHeroListView(vm: $vm) }
+        router.showScreen(.push) { _ in MoreListScreen(vm: $vm) }
       },
       MenuItem(title: "Terms of Use") {
         showAppInfo(index: 0)
@@ -103,7 +103,7 @@ struct AppInfoView: View {
   ZStack {
     Color.yellow.ignoresSafeArea()
     
-    MenuBar(vm: .constant(HeroViewModel()))
+    MenuBar(vm: .constant(HomeStore()))
   }
   .previewRouter()
 }

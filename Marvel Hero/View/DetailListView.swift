@@ -14,7 +14,7 @@ struct DetailListView: View {
       ForEach(heroes) { hero in
         HeroBigCard(image: hero.images.lg, name: hero.name, comicsName: hero.biography.fullName)
           .asButton(.press) {
-            router.showScreen(.push) { _ in DetailHeroView(hero: hero) }
+            router.showScreen(.push) { _ in DetailHeroScreen(hero: hero) }
           }
       }
     }

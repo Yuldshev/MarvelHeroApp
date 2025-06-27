@@ -1,8 +1,8 @@
 import SwiftUI
 import SwiftfulUI
 
-struct AllHeroListView: View {
-  @Binding var vm: HeroViewModel
+struct MoreListScreen: View {
+  @Binding var vm: HomeStore
   @State var offset: CGPoint = .zero
   @Environment(\.router) var router
   @Environment(\.colorScheme) var scheme
@@ -94,6 +94,6 @@ struct CategoryTextView: View {
 }
 
 #Preview {
-  AllHeroListView(vm: .constant(HeroViewModel()))
+  MoreListScreen(vm: .constant(HomeStore()))
     .previewRouter()
 }

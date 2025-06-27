@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftfulUI
 
 struct SearchListView: View {
-  @Binding var vm: HeroViewModel
+  @Binding var vm: HomeStore
   @State var searchHeroes: [Hero] = []
   @Environment(\.router) var router
   
@@ -20,6 +20,6 @@ struct SearchListView: View {
 }
 
 #Preview {
-  SearchListView(vm: .constant(HeroViewModel()), searchHeroes: mockHeroes)
+  SearchListView(vm: .constant(HomeStore()), searchHeroes: mockHeroes)
     .previewRouter()
 }

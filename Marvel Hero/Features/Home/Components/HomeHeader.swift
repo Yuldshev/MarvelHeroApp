@@ -1,9 +1,9 @@
 import SwiftUI
 import SwiftfulUI
 
-struct MarvelHeaderView: View {
+struct HomeHeader: View {
   @Binding var offset: CGPoint
-  @Binding var vm: HeroViewModel
+  @Binding var vm: HomeStore
   @State private var isSearch = false
   @Environment(\.router) var router
   @FocusState var isFocused: Bool
@@ -78,7 +78,7 @@ struct MarvelHeaderView: View {
   ZStack {
     Color.black.ignoresSafeArea()
     
-    MarvelHeaderView(offset: .constant(.zero), vm: .constant(HeroViewModel()))
+    HomeHeader(offset: .constant(.zero), vm: .constant(HomeStore()))
   }
   .previewRouter()
 }

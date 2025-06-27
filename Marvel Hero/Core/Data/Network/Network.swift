@@ -1,10 +1,10 @@
 import Foundation
 
-protocol NetworkServiceProtocol {
+protocol NetworkProtocol {
   func fetchData<T: Decodable>(from url: URL) async throws -> T
 }
 
-final class NetworkService: NetworkServiceProtocol {
+final class Network: NetworkProtocol {
   func fetchData<T: Decodable>(from url: URL) async throws -> T {
     let (data, response) = try await URLSession.shared.data(from: url)
     

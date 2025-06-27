@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftfulRouting
 
 struct MainView: View {
-  @State var vm = HeroViewModel()
+  @State var vm = HomeStore()
   @State private var route: AppRoute = .splash
   @State private var isContentReady = false
   

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-extension HeroViewModel {
+extension HomeStore {
   func selectCategory(_ category: HeroCategory) {
     withAnimation(.easeInOut) {
       if selectedCategory == category {

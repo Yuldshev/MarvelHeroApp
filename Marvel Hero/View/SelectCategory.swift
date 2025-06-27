@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SelectCategoryView: View {
-  @Binding var vm: HeroViewModel
+  @Binding var vm: HomeStore
   @Environment(\.router) var router
   
   var body: some View {
@@ -48,7 +48,7 @@ struct SelectCategoryView: View {
 //MARK: - Preview
 #Preview {
   ScrollView(.vertical) {
-    SelectCategoryView(vm: .constant(HeroViewModel()))
+    SelectCategoryView(vm: .constant(HomeStore()))
   }
   .previewRouter()
   .scrollIndicators(.hidden)
