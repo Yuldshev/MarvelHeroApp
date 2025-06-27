@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct SearchListView: View {
+struct SearchList: View {
   @Binding var vm: HomeStore
   @State var searchHeroes: [Hero] = []
   @Environment(\.router) var router
@@ -12,7 +12,7 @@ struct SearchListView: View {
   ]
   
   var body: some View {
-    DetailListView(heroes: searchHeroes)
+    HeroGridScreen(heroes: searchHeroes)
     .onChange(of: vm.searchText) { _, newQuery in
       searchHeroes = vm.searchHeroes(newQuery)
     }
@@ -20,6 +20,6 @@ struct SearchListView: View {
 }
 
 #Preview {
-  SearchListView(vm: .constant(HomeStore()), searchHeroes: mockHeroes)
+  SearchList(vm: .constant(HomeStore()), searchHeroes: mockHeroes)
     .previewRouter()
 }

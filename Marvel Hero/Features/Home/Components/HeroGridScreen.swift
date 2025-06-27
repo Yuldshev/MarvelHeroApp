@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct DetailListView: View {
+struct HeroGridScreen: View {
   @Environment(\.router) var router
   var heroes: [Hero] = mockHeroes
   var columns = [
@@ -12,9 +12,9 @@ struct DetailListView: View {
   var body: some View {
     LazyVGrid(columns: columns, spacing: 16) {
       ForEach(heroes) { hero in
-        HeroBigCard(image: hero.images.lg, name: hero.name, comicsName: hero.biography.fullName)
+        HeroCard(image: hero.images.lg, name: hero.name, comicsName: hero.biography.fullName)
           .asButton(.press) {
-            router.showScreen(.push) { _ in DetailHeroScreen(hero: hero) }
+            router.showScreen(.push) { _ in HeroDetailScreen(hero: hero) }
           }
       }
     }
@@ -24,5 +24,5 @@ struct DetailListView: View {
 }
 
 #Preview {
-  DetailListView()
+  HeroGridScreen()
 }

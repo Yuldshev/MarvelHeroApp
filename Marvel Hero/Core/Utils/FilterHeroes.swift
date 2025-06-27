@@ -1,6 +1,6 @@
 import Foundation
 
-extension HeroViewModel {
+extension HomeStore {
   func filterGoodHeroes() -> [Hero] {
     let goodHero = [346, 149, 659, 332, 107, 313]
     return heroes.filter { goodHero.contains($0.id) }

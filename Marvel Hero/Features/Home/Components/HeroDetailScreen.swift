@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct DetailHeroScreen: View {
+struct HeroDetailScreen: View {
   var hero: Hero = mockHeroes.last!
   
   var body: some View {
@@ -130,7 +130,7 @@ struct DetailHeroScreen: View {
 
 //MARK: - Preview
 #Preview {
-  DetailHeroScreen()
+  HeroDetailScreen()
     .previewRouter()
     
 }

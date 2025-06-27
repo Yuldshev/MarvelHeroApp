@@ -16,7 +16,7 @@ struct MoreListScreen: View {
     ScrollViewWithOnScrollChanged {
       LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
         Section {
-          DetailListView(heroes: vm.filteredCategory(vm.selectedCategory, limit: offset.y < -200 ? nil : 8))
+          HeroGridScreen(heroes: vm.filteredCategory(vm.selectedCategory, limit: offset.y < -200 ? nil : 8))
         } header: {
           header
         }

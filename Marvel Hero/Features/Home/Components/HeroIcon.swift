@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct IconView: View {
+struct HeroIcon: View {
   var category: HeroCategory = .all
   var gradient: LinearGradient = LinearGradient.marvelBlue
   var action: () -> Void = {}
@@ -22,11 +22,11 @@ struct IconView: View {
     Color.black.ignoresSafeArea()
     
     HStack {
-      IconView()
-      IconView()
-      IconView()
-      IconView()
-      IconView()
+      HeroIcon()
+      HeroIcon()
+      HeroIcon()
+      HeroIcon()
+      HeroIcon()
     }
     .padding(24)
   }

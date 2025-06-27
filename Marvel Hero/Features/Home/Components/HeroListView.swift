@@ -10,13 +10,13 @@ struct HeroListView: View {
   
   var body: some View {
     VStack(spacing: 16) {
-      HeroListHeader(header: title) { action() }
+      header(title: title, action: action)
         .padding(.horizontal, 24)
       
       ScrollView(.horizontal) {
         HStack {
           ForEach(heroes) { hero in
-            HeroBigCard(image: hero.images.lg, name: hero.biography.fullName, comicsName: hero.name)
+            HeroCard(image: hero.images.lg, name: hero.biography.fullName, comicsName: hero.name)
               .containerRelativeFrame(.horizontal, count: 2, spacing: 16)
               .scrollTransition { content, phase in
                 content
@@ -24,7 +24,7 @@ struct HeroListView: View {
                   .scaleEffect(phase.isIdentity ? 1 : 0.95)
               }
               .asButton(.press) {
-                router.showScreen(.push) { _ in DetailHeroView(hero: hero) }
+                router.showScreen(.push) { _ in HeroDetailScreen(hero: hero) }
               }
           }
         }
@@ -34,6 +34,19 @@ struct HeroListView: View {
       .scrollTargetBehavior(.viewAligned)
     }
     .padding(.top, 48)
+  }
+  
+  private func header(title: String, action: @escaping () -> Void) -> some View {
+    HStack {
+      Text(title)
+        .gilroyBold()
+        .foregroundStyle(.appRed)
+        .frame(maxWidth: .infinity, alignment: .leading)
+
+      Image(systemName: "chevron.right")
+        .font(.system(size: 14))
+        .asButton { action() }
+    }
   }
 }
 

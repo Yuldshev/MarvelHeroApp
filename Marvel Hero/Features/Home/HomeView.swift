@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftfulUI
 
 struct HomeView: View {
-  @Binding var vm: HeroViewModel
+  @Binding var vm: HomeStore
   @State var offset: CGPoint = .zero
   
   var body: some View {
@@ -11,7 +11,7 @@ struct HomeView: View {
         Section {
           SectionView
         } header: {
-          MarvelHeaderView(offset: $offset, vm: $vm)
+          HomeHeader(offset: $offset, vm: $vm)
         }
       }
     } onScrollChanged: { origin in
@@ -43,7 +43,7 @@ struct HomeView: View {
         }
         .transition(.blurReplace)
       } else {
-        SearchListView(vm: $vm)
+        SearchList(vm: $vm)
           .transition(.blurReplace)
       }
     }
@@ -55,6 +55,6 @@ struct HomeView: View {
 
 //MARK: - Preview
 #Preview {
-  HomeView(vm: .constant(HeroViewModel()))
+  HomeView(vm: .constant(HomeStore()))
     .previewRouter()
 }

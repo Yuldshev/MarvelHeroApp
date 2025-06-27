@@ -1,25 +1,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct HeroListHeader: View {
-  var header: String = "Heroes"
-  var action: () -> Void = {}
-  
-  var body: some View {
-    HStack {
-      Text(header)
-        .gilroyBold()
-        .foregroundStyle(.appRed)
-        .frame(maxWidth: .infinity, alignment: .leading)
-
-      Image(systemName: "chevron.right")
-        .font(.system(size: 14))
-        .asButton { action() }
-    }
-  }
-}
-
-struct HeroBigCard: View {
+struct HeroCard: View {
   var image: String = mockHeroes.last!.images.lg
   var name: String = mockHeroes.last!.biography.fullName
   var comicsName: String = mockHeroes.last!.name
@@ -54,9 +36,9 @@ struct HeroBigCard: View {
 
 #Preview {
   HStack {
-    HeroBigCard()
-    HeroBigCard()
-    HeroBigCard()
+    HeroCard()
+    HeroCard()
+    HeroCard()
   }
     
 }
