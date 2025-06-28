@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftfulRouting
 
 struct MainView: View {
-  @State var vm = HomeStore()
+  @State var vm = HeroStore()
   @State private var route: AppRoute = .splash
   @State private var isContentReady = false
   
@@ -14,7 +14,7 @@ struct MainView: View {
           
         case .home:
           RouterView { _ in
-            HomeView(vm: $vm)
+            HeroView(vm: $vm)
               .onFullyRendered { isContentReady = true }
           }
           .skeleton(!isContentReady)

@@ -1,9 +1,9 @@
 import SwiftUI
 import SwiftfulUI
 
-struct HomeHeader: View {
+struct HeroHeader: View {
   @Binding var offset: CGPoint
-  @Binding var vm: HomeStore
+  @Binding var vm: HeroStore
   @State private var isSearch = false
   @Environment(\.router) var router
   @FocusState var isFocused: Bool
@@ -31,14 +31,22 @@ struct HomeHeader: View {
         HStack {
           Image(systemName: "magnifyingglass")
           
-          TextField("Search...", text: $vm.searchText)
+          TextField("Search...", text: $vm.searchQuery)
             .gilroySemibold()
             .focused($isFocused)
+            .onChange(of: vm.searchQuery) { _, query in
+              Task {
+                await vm.dispatch(intent: .searchHeroes(query: query))
+              }
+            }
           
           Image(systemName: "xmark")
             .asButton {
               isFocused = false
-              vm.searchText = ""
+              vm.searchQuery = ""
+              Task {
+                await vm.dispatch(intent: .searchHeroes(query: ""))
+              }
               isSearch.toggle()
             }
         }
@@ -78,7 +86,7 @@ struct HomeHeader: View {
   ZStack {
     Color.black.ignoresSafeArea()
     
-    HomeHeader(offset: .constant(.zero), vm: .constant(HomeStore()))
+    HeroHeader(offset: .constant(.zero), vm: .constant(HeroStore()))
   }
   .previewRouter()
 }

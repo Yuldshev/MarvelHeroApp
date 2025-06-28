@@ -1,13 +1,13 @@
 import Foundation
 
-protocol CacheServiceProtocol {
+protocol CacheProtocol {
   func saveCache<T: Encodable>(_ data: T, key: CacheKey) async
   func loadCache<T: Decodable>(key: CacheKey, as type: T.Type) async -> T?
   func removeCache(for key: CacheKey) async
   func clearAllCache() async
 }
 
-actor CacheService: CacheServiceProtocol {
+actor Cache: CacheProtocol {
   private let userDefaults = UserDefaults.standard
   
   func saveCache<T>(_ data: T, key: CacheKey) async where T : Encodable {

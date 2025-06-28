@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct HeroGridScreen: View {
+struct HeroGrid: View {
   @Environment(\.router) var router
   var heroes: [Hero] = mockHeroes
   var columns = [
@@ -14,7 +14,7 @@ struct HeroGridScreen: View {
       ForEach(heroes) { hero in
         HeroCard(image: hero.images.lg, name: hero.name, comicsName: hero.biography.fullName)
           .asButton(.press) {
-            router.showScreen(.push) { _ in HeroDetailScreen(hero: hero) }
+            router.showScreen(.push) { _ in HeroDetail(hero: hero) }
           }
       }
     }
@@ -24,5 +24,5 @@ struct HeroGridScreen: View {
 }
 
 #Preview {
-  HeroGridScreen()
+  HeroGrid()
 }
